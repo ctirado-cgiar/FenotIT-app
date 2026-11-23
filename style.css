@@ -45,6 +45,8 @@ body {
   text-align: center;
 }
 
+footer p { margin: 4px 0; }
+
 .hero h1 {
   margin: 12px 0 4px;
   font-size: 44px;
@@ -109,3 +111,5 @@ footer {
   color: var(--muted);
   text-align: center;
 }
+
+footer p { margin: 4px 0; }
