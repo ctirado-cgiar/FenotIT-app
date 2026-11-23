@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FenotIT</title>
+  <meta name="description" content="Software de fenotipado digital que convierte tus fotos en datos listos para analizar.">
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="lang">
+    <button data-set="es" class="on">ES</button>
+    <button data-set="en">EN</button>
+  </nav>
+
+  <header class="hero">
+    <img src="logo.png" alt="" width="88" height="88">
+    <h1>FenotIT</h1>
+    <p class="motto" data-es="Tus imágenes, convertidas en datos" data-en="Your images, turned into data"></p>
+    <p class="lead" data-es="Software de fenotipado digital que convierte tus fotos en datos listos para analizar."
+       data-en="Digital phenotyping software that turns your photos into data ready for analysis."></p>
+    <a class="download" href="https://github.com/ctirado-cgiar/FenotIT-app/releases/latest/download/FenotIT-Setup.exe">
+      <span data-es="Descargar para Windows" data-en="Download for Windows"></span>
+    </a>
+    <p class="meta"><span data-es="Versión" data-en="Version"></span> 0.9.0 &nbsp;|&nbsp; Windows 10 / 11, 64 bits</p>
+  </header>
+
+  <main>
+    <section>
+      <h2 data-es="Instalar" data-en="Install"></h2>
+      <ol>
+        <li data-es="Descarga y abre FenotIT-Setup.exe." data-en="Download and open FenotIT-Setup.exe."></li>
+        <li data-es="Si Windows muestra «Windows protegió su PC», elige «Más información» y luego «Ejecutar de todas formas»."
+            data-en="If Windows shows “Windows protected your PC”, choose “More info” and then “Run anyway”."></li>
+        <li data-es="Sigue los pasos. No necesita permisos de administrador."
+            data-en="Follow the steps. No administrator rights needed."></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2 data-es="Actualizar" data-en="Update"></h2>
+      <p data-es="FenotIT avisa al abrirse cuando hay una versión nueva. Instálala encima de la anterior: tus proyectos, modelos y preferencias se conservan."
+         data-en="FenotIT tells you when a new version is out. Install it over the previous one: your projects, models and settings are kept."></p>
+    </section>
+
+    <section>
+      <h2 data-es="Más" data-en="More"></h2>
+      <ul class="links">
+        <li><a href="https://github.com/ctirado-cgiar/FenotIT-app/releases" data-es="Todas las versiones" data-en="All versions"></a></li>
+        <li><a href="https://github.com/ctirado-cgiar/FenotIT" data-es="Código fuente (con invitación)" data-en="Source code (by invitation)"></a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>© Alliance of Bioversity International &amp; CIAT</footer>
+
+  <script>
+    function setLang(code) {
+      document.documentElement.lang = code;
+      document.querySelectorAll("[data-" + code + "]").forEach(function (node) {
+        node.textContent = node.getAttribute("data-" + code);
+      });
+      document.querySelectorAll(".lang button").forEach(function (button) {
+        button.classList.toggle("on", button.dataset.set === code);
+      });
+      try { localStorage.setItem("lang", code); } catch (error) {}
+    }
+    document.querySelectorAll(".lang button").forEach(function (button) {
+      button.addEventListener("click", function () { setLang(button.dataset.set); });
+    });
+    var saved = null;
+    try { saved = localStorage.getItem("lang"); } catch (error) {}
+    setLang(saved || ((navigator.language || "es").slice(0, 2) === "es" ? "es" : "en"));
+  </script>
+</body>
+</html>
